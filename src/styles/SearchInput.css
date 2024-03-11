@@ -1,0 +1,36 @@
+.search-input {
+  height: 37px;
+  background-color: white;
+  border-radius: 4px;
+  padding-left: 9px;
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border: 2px solid #dfe4ea;
+}
+
+.search-input input {
+  width: 100%;
+  overflow: hidden;
+  border: 0px;
+}
+
+.search-input input:focus {
+  outline: none;
+}
+
+.search-icon {
+  padding-right: 15px;
+  padding-left: 10px;
+  color: #979cb0;
+}
+
+.fa {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font: normal normal normal normal normal normal auto auto normal normal normal
+    normal normal 1 FontAwesome;
+}
