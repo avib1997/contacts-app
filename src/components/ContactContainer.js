@@ -6,7 +6,7 @@ import ContactNewButton from "./ContactNewButton";
 function ContactContainer() {
   return (
     <div className="contact-container">
-      <SearchInput />
+      {/* <SearchInput /> */}
       <ContactList />
       <ContactNewButton />
     </div>

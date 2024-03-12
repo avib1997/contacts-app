@@ -1,10 +1,10 @@
 import React from "react";
+import "../styles/Contact.css"; // Import the Contact component styles
 import ContactAvatar from "./ContactAvatar"; // Import the ContactAvatar component
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faTimes } from "@fortawesome/free-solid-svg-icons"; // Corrected import for the phone and times icons
-import "../styles/Contact.css";
 
-function Contact({ name, phone, avatarNumber }) {
+function Contact({ id, name, phone, avatarNumber, onDelete }) {
   // Make sure to accept avatarNumber as a prop
   return (
     <div className="contact">
@@ -23,7 +23,11 @@ function Contact({ name, phone, avatarNumber }) {
         </button>
       </div>
       <div className="contact-button-close">
-        <FontAwesomeIcon icon={faTimes} />{" "}
+        <FontAwesomeIcon
+          icon={faTimes}
+          onClick={() => onDelete(id)} // Call onDelete function with contact ID
+          style={{ cursor: "pointer" }} // Add cursor pointer style
+        />
         {/* Use the FontAwesomeIcon component */}
       </div>
     </div>
