@@ -1,0 +1,10 @@
+// actions.js
+
+export const ADD_CONTACT = "ADD_CONTACT";
+
+export const addContact = (contact) => {
+  return {
+    type: ADD_CONTACT,
+    payload: contact,
+  };
+};
