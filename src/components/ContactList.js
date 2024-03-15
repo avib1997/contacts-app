@@ -1,52 +1,36 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import Contact from "./Contact";
 import "../styles/Contact.css";
-import "../styles/SearchInput.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-function ContactList() {
-  // Sample contacts data
-  const [contacts, setContacts] = useState([
-    { id: 1, name: "Dan Smith", phone: "(123) 745-526657", avatarNumber: 1 },
-    {
-      id: 2,
-      name: "Alex Alvarez",
-      phone: "(123) 542-5634271",
-      avatarNumber: 2,
-    },
-    { id: 3, name: "Norman Dirtic", phone: "(724) 124-88573", avatarNumber: 3 },
-  ]);
-
-  // State variable for search term
+function ContactList({ contacts }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Function to handle contact deletion
   const handleDelete = (id) => {
-    setContacts(contacts.filter((contact) => contact.id !== id));
+    // Dispatch action to delete contact
+    // Example: dispatch(deleteContact(id));
   };
 
-  // Function to handle search input change
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  // Filter contacts based on search term
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div>
-      {/* Single search bar */}
-      <input
-        type="text"
-        placeholder="Search contacts..."
-        value={searchTerm}
-        onChange={handleSearch}
-      />
+    <div className="contact-container">
+      <div className="search-input">
+        <input
+          type="text"
+          placeholder="Search contacts..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <div className="search-icon">
+          <FontAwesomeIcon icon={faSearch} />
+        </div>
+      </div>
 
-      {/* Display filtered contacts */}
       <div className="contacts-container">
         {filteredContacts.map((contact) => (
           <Contact
@@ -54,7 +38,7 @@ function ContactList() {
             name={contact.name}
             phone={contact.phone}
             avatarNumber={contact.avatarNumber}
-            onDelete={handleDelete}
+            onDelete={() => handleDelete(contact.id)}
             id={contact.id}
           />
         ))}
@@ -63,4 +47,10 @@ function ContactList() {
   );
 }
 
-export default ContactList;
+const mapStateToProps = (state) => {
+  return {
+    contacts: state.contacts,
+  };
+};
+
+export default connect(mapStateToProps)(ContactList);
