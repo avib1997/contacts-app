@@ -58,6 +58,7 @@ button {
   align-items: center;
   align-content: stretch;
   justify-content: space-between;
+  margin-top: 0px;
 }
 
 .contact-avatar {
@@ -114,12 +115,14 @@ button {
 .contact-new {
   display: flex;
   justify-content: center;
+  width: 110%;
 }
 
 .contact-new button {
   background-color: transparent;
   border: 0px;
   font-size: 20px;
+  justify-content: center;
 }
 
 .contact-button-close {
